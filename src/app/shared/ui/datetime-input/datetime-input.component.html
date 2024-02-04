@@ -1,0 +1,30 @@
+<form
+  class="datetime-input flex space-between align-center"
+  [formGroup]="timeForm"
+>
+  <mat-form-field>
+    <input
+      type="number"
+      step="1"
+      max="23"
+      min="0"
+      formControlName="hours"
+      matInput
+      (focus)="hoursInput.select()"
+      (blur)="onHoursBlur()"
+      #hoursInput
+    />
+  </mat-form-field>
+  <span class="separator mb-1">:</span>
+  <mat-form-field>
+    <input
+      type="number"
+      step="1"
+      formControlName="minutes"
+      matInput
+      (focus)="minutesInput.select()"
+      (blur)="onMinutesBlur()"
+      #minutesInput
+    />
+  </mat-form-field>
+</form>

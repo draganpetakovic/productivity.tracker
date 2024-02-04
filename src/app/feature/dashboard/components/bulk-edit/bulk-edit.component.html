@@ -1,0 +1,15 @@
+<div class="bulk-edit p-2">
+  <div class="overflow-auto employee-data__container">
+    @for (employee of selectedEmployees; track employee.id) {
+    <app-employee-data
+      [employee]="employee"
+      (employeeChange)="onEmployeeChange($event)"
+      (updatedShiftData)="onShiftDataChange($event)"
+    ></app-employee-data>
+    }
+  </div>
+  <div class="flex justify-end mt-1">
+    <button mat-flat-button color="primary" (click)="onSave()">Save</button>
+    <button mat-flat-button class="ml-1" (click)="onClose()">Cancel</button>
+  </div>
+</div>

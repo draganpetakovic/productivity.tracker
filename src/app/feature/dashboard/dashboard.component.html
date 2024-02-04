@@ -1,1 +1,34 @@
-<p>dashboard works!</p>
+<div class="dashboard p-4">
+  <h1 class="text-center mb-3">Productivity Tracker</h1>
+  <div class="dashboard__data-grid mt-2">
+    <h3>Total number of Employees: {{ data().length }}</h3>
+    <h3>Total number of Shifts: {{ totalShifts }}</h3>
+    <h3>
+      Total number of Hours: {{ overalData().totalHours | number : "1.2-2" }}
+    </h3>
+    <h3>
+      Total regular Hours paid:
+      {{ overalData().regularHoursPaid | number : "1.2-2" }}
+    </h3>
+    <h3>
+      Total overtime Hours paid:
+      {{ overalData().overtimeHoursPaid | number : "1.2-2" }}
+    </h3>
+  </div>
+  <button
+    mat-flat-button
+    color="primary"
+    [disabled]="!selectedEmployees.length"
+    (click)="onBulkEdit()"
+  >
+    Bulk Edit
+  </button>
+
+  <app-table
+    [columns]="employeeColumns"
+    [data]="data()"
+    [selectable]="true"
+    (rowSelectionChange)="onTableSelectionChange($event)"
+    #table
+  ></app-table>
+</div>

@@ -1,0 +1,47 @@
+<div class="employee-data">
+  <div class="employee-data__form" [formGroup]="employeeForm">
+    <mat-form-field class="form-control">
+      <label for="employee-name">Employee Name</label>
+      <input type="text" id="employee-name" matInput formControlName="name" />
+    </mat-form-field>
+    <mat-form-field class="form-control">
+      <label for="employee-name">Employee Hourly Rate</label>
+      <input
+        type="text"
+        id="employee-name"
+        matInput
+        formControlName="hourlyRate"
+      />
+    </mat-form-field>
+    <mat-form-field class="form-control">
+      <label for="employee-name">Employee Overtime Rate</label>
+      <input
+        type="text"
+        id="employee-name"
+        matInput
+        formControlName="hourlyRateOvertime"
+      />
+    </mat-form-field>
+  </div>
+  <div class="employee-shifts__table-container">
+    <div class="flex space-between align-center">
+      <h4>Shifts</h4>
+      <mat-form-field>
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="picker" [formControl]="dateControl" />
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <app-table
+      [columns]="columns"
+      [data]="shifts()"
+      [previousUpdates]="updatedShifts"
+      (cellValueChange)="onShiftChange($event)"
+    ></app-table>
+  </div>
+</div>
