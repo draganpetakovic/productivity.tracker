@@ -1,6 +1,6 @@
-import { Injectable, inject, signal } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { ApiService } from '../../../core/services/api.service';
-import { Observable, catchError, forkJoin, map, of, tap } from 'rxjs';
+import { Observable, catchError, forkJoin, map, of } from 'rxjs';
 import {
   BulkUpdateResponse,
   Employee,
@@ -10,9 +10,7 @@ import {
 } from '../../../shared/models/employee';
 import { ShiftService } from './shift.service';
 import { Shift } from '../../../shared/models/shift';
-import { DashboardData } from '../models/dashboard-data';
 import { DateUtilService } from '../../../core/services/date-util.service';
-import { UpdateResponse } from '../../../core/models/http-request';
 import { TableColumn } from '../../../shared/components/table/table-column';
 
 @Injectable({
@@ -72,12 +70,6 @@ export class EmployeeService {
 
   getEmployeeShifts(shifts: Shift[], employeeId: string): Shift[] {
     return shifts.filter((s: Shift): boolean => s.employeeId === employeeId);
-    // .map(
-    //   (shift: Shift): Shift => ({
-    //     ...shift,
-    //     totalClockInTime: (shift.clockOut - shift.clockIn) / 1000 / 60 / 60,
-    //   })
-    // );
   }
 
   mapTotalClockedInTimeToShifts(shifts: Shift[]): Shift[] {
@@ -150,7 +142,6 @@ export class EmployeeService {
   }
 
   mapShiftsToEmployee(employee: Employee, shifts: Shift[]): EmployeeWithShifts {
-    // const employeeShifts = this.getEmployeeShifts(shifts, employee.id);
     const shiftsWithTotalClockedInTime =
       this.mapTotalClockedInTimeToShifts(shifts);
     const totalClockedInTime =

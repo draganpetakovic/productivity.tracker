@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import e from 'express';
 
 @Injectable({
   providedIn: 'root',
@@ -28,10 +27,6 @@ export class DateUtilService {
     };
   }
 
-  // getHoursWorkedPerDay(shift: Shift): any {
-  //   return shift.clockOut - shift.clockIn;
-  // }
-
   calculateMidnight(timestamp: number): number {
     const date = new Date(timestamp);
 
@@ -47,10 +42,4 @@ export class DateUtilService {
     const endDate = new Date(end);
     return startDate.getDate() === endDate.getDate();
   }
-
-  // checkIfShiftEndsOnNextDay(shift: Shift): boolean {
-  //   const startDate = new Date(shift.clockIn);
-  //   const endDate = new Date(shift.clockOut);
-  //   return startDate.getDate() !== endDate.getDate();
-  // }
 }

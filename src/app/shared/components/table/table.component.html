@@ -1,4 +1,4 @@
-<div [formGroup]="rowForm">
+<div [formGroup]="rowForm" class="table">
   <table mat-table [dataSource]="data()" formArrayName="data">
     <ng-container matColumnDef="selection">
       <th mat-header-cell *matHeaderCellDef></th>
@@ -16,19 +16,16 @@
       <td
         mat-cell
         *matCellDef="let row; index as i"
-        [class.updated]="
+        [class.updated-cell]="
           column['field']
             | checkForUpdatedFields : row[rowComparer()] : updatedData
         "
       >
-        <!-- updatedData[row[rowComparer()]] &&
-      updatedData[row[rowComparer()]][column['field']] -->
         @if (column.type === 'text') {
         {{ row[column.field] }}
         } @if(column.type === 'decimal') {
         {{ row[column.field] | number : "1.2-2" }}
         } @if (column.type === 'editDatetime') { @if(rowsData.controls.length) {
-
         <span [formGroupName]="i">
           <app-datetime-input
             [formControlName]="column['field']"

@@ -5,13 +5,7 @@ import { Employee, EmployeeWithShifts } from '../../../shared/models/employee';
 import { Shift } from '../../../shared/models/shift';
 import { ShiftService } from './shift.service';
 import { DashboardData } from '../models/dashboard-data';
-import {
-  ActivatedRouteSnapshot,
-  Resolve,
-  ResolveFn,
-  RouterStateSnapshot,
-} from '@angular/router';
-import { DateUtilService } from '../../../core/services/date-util.service';
+import { ResolveFn } from '@angular/router';
 
 export const dashboardDataResolver: ResolveFn<DashboardData> = () => {
   const dataResolverService = inject(DashboardDataService);
